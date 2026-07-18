@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "الطريقة الشيخية",
+    "slug": "tariqa-cheikhiyya",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B3D2E"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.cheikhiyya.tariqa",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0B3D2E"
+      },
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"]
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0B3D2E",
+          "image": "./assets/splash.png"
+        }
+      ]
+    ]
+  }
+}
