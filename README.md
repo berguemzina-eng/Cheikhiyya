@@ -22,9 +22,19 @@ el contenido de www.cheikhiyya.com.
 > permite tener las +80 páginas de la web dentro de la app desde el
 > día uno, sin transcribir cada una a mano, y se mantiene siempre
 > actualizado si editas la web. Si más adelante quieres contenido
-> 100% nativo (offline total) para secciones concretas (p. ej. Hizb
-> Al-Falah, la Hadra, biografías), se pueden ir migrando una a una a
-> pantallas nativas con texto propio — dímelo y lo hacemos por partes.
+> 100% nativo (offline total) para más secciones (p. ej. la Hadra,
+> biografías), se pueden ir migrando una a una — dímelo y lo hacemos
+> por partes.
+
+### Contenido ya 100% nativo (offline)
+
+- **حزب الفلاح (Hizb Al-Falah)**: pantalla propia
+  (`src/screens/HizbAlFalahScreen.js` + datos en
+  `src/data/hizbAlFalah.js`), con el texto completo del wird, tipografía
+  árabe legible y un contador tocable por cada fórmula (útil para
+  contar las repeticiones del dhikr). No necesita conexión a internet.
+  Está enlazada tanto desde la tarjeta de portada como desde el menú
+  lateral (Adkar y Aurad → حزب الفلاح).
 
 ## Requisitos
 
