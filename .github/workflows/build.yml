@@ -1,0 +1,44 @@
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Generar proyecto Android nativo (expo prebuild)
+        run: npx expo prebuild -p android --non-interactive
+
+      - name: Dar permisos a gradlew
+        run: chmod +x android/gradlew
+
+      - name: Compilar APK (debug, sin firma, listo para instalar)
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Subir APK como resultado descargable
+        uses: actions/upload-artifact@v4
+        with:
+          name: cheikhiyya-app-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
