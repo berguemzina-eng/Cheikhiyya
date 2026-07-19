@@ -44,7 +44,7 @@ val MENU: List<MenuNode> = listOf(
         icon = "hand",
         children = listOf(
             MenuNode(id = "hizb_al_falah", title = "حزب الفلاح", articleId = "hizb_al_falah"),
-            MenuNode(id = "hadra", title = "الحضرة", articleId = pending("الحضرة")),
+            MenuNode(id = "hadra", title = "الحضرة", articleId = "hadra"),
             MenuNode(id = "yaqouta", title = "الياقوتة", articleId = pending("الياقوتة")),
             MenuNode(id = "adkar_amma", title = "الأذكار العامة", articleId = pending("الأذكار العامة")),
         ),
