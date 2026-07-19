@@ -1,5 +1,6 @@
 package com.cheikhiyya.tariqa.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,9 +13,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.cheikhiyya.tariqa.R
 import com.cheikhiyya.tariqa.data.MENU
 import com.cheikhiyya.tariqa.data.MenuNode
 import com.cheikhiyya.tariqa.ui.theme.BorderColor
@@ -35,6 +38,12 @@ fun DrawerContent(onNavigate: (String) -> Unit) {
                 .padding(top = 40.dp, bottom = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+            Image(
+                painter = painterResource(id = R.drawable.logo_placeholder),
+                contentDescription = "شعار الطريقة الشيخية",
+                modifier = Modifier.size(64.dp),
+            )
+            Spacer(Modifier.height(8.dp))
             Text("الطريقة الشيخية الشاذلية", color = Gold, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(4.dp))
             Text("Tariqa Cheikhiyya", color = GoldLight)

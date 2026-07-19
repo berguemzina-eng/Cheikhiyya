@@ -1,6 +1,8 @@
 package com.cheikhiyya.tariqa.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -14,13 +16,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.cheikhiyya.tariqa.R
+import com.cheikhiyya.tariqa.ui.theme.BorderColor
 import com.cheikhiyya.tariqa.ui.theme.Cream
 import com.cheikhiyya.tariqa.ui.theme.Gold
 import com.cheikhiyya.tariqa.ui.theme.GoldLight
+import com.cheikhiyya.tariqa.ui.theme.IslamicPatternBackground
 import com.cheikhiyya.tariqa.ui.theme.Primary
+import com.cheikhiyya.tariqa.ui.theme.PrimaryLight
 
 data class HomeCard(val title: String, val destination: String)
 
@@ -50,19 +57,45 @@ fun HomeScreen(onOpenDrawer: () -> Unit, onNavigate: (String) -> Unit) {
         containerColor = Cream,
     ) { padding ->
         Column(modifier = Modifier.padding(padding).fillMaxSize()) {
+            // Cabecera con el logo y patrón geométrico islámico de fondo
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
-                    .background(Primary, RoundedCornerShape(14.dp))
-                    .padding(18.dp),
+                    .background(Primary, RoundedCornerShape(18.dp))
+                    .border(1.dp, Gold.copy(alpha = 0.6f), RoundedCornerShape(18.dp)),
             ) {
-                Text(
-                    "موقع الطريقة الشيخية الشاذلية\n( طريقة أسلاف بيضاء نقية )",
-                    color = GoldLight,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
+                IslamicPatternBackground(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(190.dp),
                 )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 22.dp, horizontal = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.logo_placeholder),
+                        contentDescription = "شعار الطريقة الشيخية",
+                        modifier = Modifier.size(76.dp),
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    Text(
+                        "موقع الطريقة الشيخية الشاذلية",
+                        color = GoldLight,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Text(
+                        "( طريقة أسلاف بيضاء نقية )",
+                        color = GoldLight,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
             }
 
             LazyVerticalGrid(
@@ -76,7 +109,8 @@ fun HomeScreen(onOpenDrawer: () -> Unit, onNavigate: (String) -> Unit) {
                         modifier = Modifier
                             .height(110.dp)
                             .fillMaxWidth()
-                            .background(Primary, RoundedCornerShape(12.dp))
+                            .background(PrimaryLight, RoundedCornerShape(12.dp))
+                            .border(1.dp, BorderColor, RoundedCornerShape(12.dp))
                             .clickable { onNavigate(card.destination) }
                             .padding(12.dp),
                         contentAlignment = Alignment.Center,
