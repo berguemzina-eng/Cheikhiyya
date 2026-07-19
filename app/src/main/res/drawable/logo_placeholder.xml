@@ -1,0 +1,33 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+
+    <!-- Círculo exterior dorado -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#C9A24B"
+        android:strokeWidth="3"
+        android:pathData="M120,14 A106,106 0 1 1 119.9,14 Z" />
+
+    <!-- Círculo interior fino -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#E4C97A"
+        android:strokeWidth="1.5"
+        android:pathData="M120,30 A90,90 0 1 1 119.9,30 Z" />
+
+    <!-- Estrella de ocho puntas (khatam) -->
+    <path
+        android:fillColor="#C9A24B"
+        android:pathData="M120,40 L134,92 L186,78 L148,116 L186,154 L134,140 L120,192 L106,140 L54,154 L92,116 L54,78 L106,92 Z" />
+
+    <!-- Medallón central -->
+    <path
+        android:fillColor="#0B3D2E"
+        android:pathData="M120,90 A26,26 0 1 1 119.9,90 Z" />
+    <path
+        android:fillColor="#E4C97A"
+        android:pathData="M120,100 A16,16 0 1 1 119.9,100 Z" />
+</vector>
