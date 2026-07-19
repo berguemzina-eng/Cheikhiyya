@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Placeholder: estrella/creciente dorado. Reemplaza por el logo real de la Tariqa. -->
+    <path
+        android:fillColor="#C9A24B"
+        android:pathData="M54,24 A30,30 0 1 0 54,84 A24,24 0 1 1 54,24 Z" />
+    <path
+        android:fillColor="#E4C97A"
+        android:pathData="M70,40 L73,48 L81,48 L74.5,53 L77,61 L70,56.5 L63,61 L65.5,53 L59,48 L67,48 Z" />
+</vector>
