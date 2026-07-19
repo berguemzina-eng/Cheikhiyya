@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.TariqaCheikhiyya" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#0B3D2E</item>
+        <item name="android:windowBackground">#FBF6EC</item>
+    </style>
+</resources>
