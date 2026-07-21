@@ -1,0 +1,188 @@
+package com.cheikhiyya.tariqa.ui.screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.WifiOff
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.cheikhiyya.tariqa.data.*
+import com.cheikhiyya.tariqa.ui.theme.*
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HadraScreen(onBack: () -> Unit) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(modifier = Modifier.size(30.dp).background(Cream, androidx.compose.foundation.shape.CircleShape), contentAlignment = Alignment.Center) {
+                            androidx.compose.foundation.Image(painter = androidx.compose.ui.res.painterResource(id = com.cheikhiyya.tariqa.R.drawable.logo_circular), contentDescription = null, modifier = Modifier.size(24.dp))
+                        }
+                        Spacer(Modifier.width(8.dp))
+                        Text("الحضرة", color = Gold, fontWeight = FontWeight.Bold)
+                    }
+                },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "رجوع", tint = Color.White)
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Primary),
+            )
+        },
+        containerColor = Cream,
+    ) { padding ->
+        Column(modifier = Modifier.padding(padding).fillMaxSize()) {
+            Row(
+                modifier = Modifier.fillMaxWidth().background(GoldLight).padding(vertical = 6.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(Icons.Filled.WifiOff, contentDescription = null, tint = Primary, modifier = Modifier.size(14.dp))
+                Spacer(Modifier.width(6.dp))
+                Text("متوفر بدون إنترنت — اضغط على أي بيت للعد", color = Primary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+            }
+
+            LazyColumn(contentPadding = PaddingValues(16.dp), modifier = Modifier.weight(1f)) {
+                item {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().background(Primary, RoundedCornerShape(12.dp)).padding(14.dp),
+                    ) {
+                        HADRA_INTRO.forEach {
+                            Text(it, color = GoldLight, textAlign = TextAlign.Right, lineHeight = 24.sp, modifier = Modifier.fillMaxWidth())
+                        }
+                    }
+                    Spacer(Modifier.height(14.dp))
+                    IslamicDivider(modifier = Modifier.padding(bottom = 10.dp))
+                    SectionLabel("مفاتيح وأذكار قبل الحضرة")
+                }
+
+                itemsIndexed(HADRA_OPENING_DHIKR) { index, line ->
+                    DhikrCounterCard(index = index, text = line.text, target = line.repeat)
+                    Spacer(Modifier.height(10.dp))
+                }
+
+                item {
+                    Spacer(Modifier.height(6.dp))
+                    Column(
+                        modifier = Modifier.fillMaxWidth().background(BorderColor, RoundedCornerShape(10.dp)).padding(12.dp),
+                    ) {
+                        Text(HADRA_BEFORE_VERSES, color = TextDark, textAlign = TextAlign.Right, fontSize = 13.sp, lineHeight = 22.sp)
+                    }
+                    Spacer(Modifier.height(14.dp))
+                    IslamicDivider(modifier = Modifier.padding(bottom = 10.dp))
+                    SectionLabel("أبيات الحضرة (24 بيتا)")
+                }
+
+                items(HADRA_VERSES) { verse ->
+                    HadraVerseCard(verse)
+                    Spacer(Modifier.height(10.dp))
+                }
+
+                item {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().background(BorderColor, RoundedCornerShape(10.dp)).padding(12.dp),
+                    ) {
+                        Text(HADRA_CLOSING_NOTE, color = TextDark, textAlign = TextAlign.Right, fontSize = 13.sp, lineHeight = 22.sp)
+                    }
+                    Spacer(Modifier.height(14.dp))
+                    SectionLabel("الدعاء الختامي")
+                }
+
+                itemsIndexed(HADRA_FINAL_DUA) { index, line ->
+                    DhikrCounterCard(index = index, text = line.text, target = line.repeat)
+                    Spacer(Modifier.height(10.dp))
+                }
+
+                item {
+                    Spacer(Modifier.height(6.dp))
+                    Column(
+                        modifier = Modifier.fillMaxWidth().background(Primary, RoundedCornerShape(12.dp)).padding(14.dp),
+                    ) {
+                        HADRA_CLOSING_POEM.forEach {
+                            Text(it, color = GoldLight, textAlign = TextAlign.Center, lineHeight = 26.sp, modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp))
+                        }
+                    }
+                    Spacer(Modifier.height(14.dp))
+                    Text(HADRA_FINAL_LINE, color = TextDark, textAlign = TextAlign.Right, fontSize = 14.sp, lineHeight = 24.sp, modifier = Modifier.fillMaxWidth())
+                    Spacer(Modifier.height(14.dp))
+                    Text(HADRA_SOURCE, color = TextMuted, fontSize = 12.sp, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+                    Spacer(Modifier.height(24.dp))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SectionLabel(text: String) {
+    Text(
+        text,
+        color = Primary,
+        fontWeight = FontWeight.Bold,
+        fontSize = 15.sp,
+        textAlign = TextAlign.Right,
+        modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+    )
+}
+
+@Composable
+private fun HadraVerseCard(verse: HadraVerse) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White, RoundedCornerShape(10.dp))
+            .border(1.dp, BorderColor, RoundedCornerShape(10.dp))
+            .padding(12.dp),
+    ) {
+        Text("البيت ${verse.number}", color = TextMuted, fontSize = 11.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Right, modifier = Modifier.fillMaxWidth())
+        Spacer(Modifier.height(4.dp))
+        Text(verse.text, color = TextDark, fontSize = 16.sp, textAlign = TextAlign.Right, lineHeight = 28.sp, modifier = Modifier.fillMaxWidth())
+    }
+}
+
+@Composable
+private fun DhikrCounterCard(index: Int, text: String, target: Int) {
+    var count by remember { mutableIntStateOf(0) }
+    val done = count >= target
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(if (done) Color(0xFFF1E9D2) else Color.White, RoundedCornerShape(10.dp))
+            .border(1.dp, if (done) Gold else BorderColor, RoundedCornerShape(10.dp))
+            .clickable { count = if (count >= target) 0 else count + 1 }
+            .padding(12.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text("${index + 1}", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+            if (target > 1) {
+                Box(modifier = Modifier.background(Primary, RoundedCornerShape(20.dp)).padding(horizontal = 10.dp, vertical = 2.dp)) {
+                    Text("$count / $target", color = Gold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+        Spacer(Modifier.height(6.dp))
+        Text(text, color = TextDark, fontSize = 16.sp, textAlign = TextAlign.Right, lineHeight = 28.sp, modifier = Modifier.fillMaxWidth())
+    }
+}
