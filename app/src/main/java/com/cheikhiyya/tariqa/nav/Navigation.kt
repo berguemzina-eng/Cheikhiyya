@@ -16,6 +16,8 @@ import com.cheikhiyya.tariqa.ui.screens.HadraScreen
 import com.cheikhiyya.tariqa.ui.screens.HizbAlFalahScreen
 import com.cheikhiyya.tariqa.ui.screens.HomeScreen
 import com.cheikhiyya.tariqa.ui.screens.PendingScreen
+import com.cheikhiyya.tariqa.ui.screens.Silsila2Screen
+import com.cheikhiyya.tariqa.ui.screens.SilsilaScreen
 import com.cheikhiyya.tariqa.ui.screens.TasbihScreen
 import com.cheikhiyya.tariqa.ui.screens.YaqoutaScreen
 import kotlinx.coroutines.launch
@@ -39,7 +41,7 @@ fun RootNavigation() {
         drawerContent = {
             DrawerContent(onNavigate = { destination ->
                 scope.launch { drawerState.close() }
-                if (destination == "home" || destination == "hizb_al_falah" || destination == "hadra" || destination == "yaqouta" || destination == "tasbih") {
+                if (destination == "home" || destination == "hizb_al_falah" || destination == "hadra" || destination == "yaqouta" || destination == "tasbih" || destination == "silsila" || destination == "silsila2") {
                     navController.navigate(destination)
                 } else {
                     navController.navigate("article/${encodeRoute(destination)}")
@@ -52,7 +54,7 @@ fun RootNavigation() {
                 HomeScreen(
                     onOpenDrawer = { scope.launch { drawerState.open() } },
                     onNavigate = { destination ->
-                        if (destination == "home" || destination == "hizb_al_falah" || destination == "hadra" || destination == "yaqouta" || destination == "tasbih") {
+                        if (destination == "home" || destination == "hizb_al_falah" || destination == "hadra" || destination == "yaqouta" || destination == "tasbih" || destination == "silsila" || destination == "silsila2") {
                             navController.navigate(destination)
                         } else {
                             navController.navigate("article/${encodeRoute(destination)}")
@@ -75,6 +77,14 @@ fun RootNavigation() {
 
             composable("tasbih") {
                 TasbihScreen(onBack = { navController.popBackStack() })
+            }
+
+            composable("silsila") {
+                SilsilaScreen(onBack = { navController.popBackStack() })
+            }
+
+            composable("silsila2") {
+                Silsila2Screen(onBack = { navController.popBackStack() })
             }
 
             // Cualquier otra ruta: si es un artículo real lo mostramos,
