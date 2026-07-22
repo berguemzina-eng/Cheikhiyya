@@ -118,7 +118,7 @@ fun HomeScreen(onOpenDrawer: () -> Unit, onNavigate: (String) -> Unit) {
                             Image(
                                 painter = painterResource(id = R.drawable.logo_circular),
                                 contentDescription = "شعار الطريقة الشيخية",
-                                modifier = Modifier.size(70.dp),
+                                modifier = Modifier.size(45.dp),
                             )
                         }
                     }
