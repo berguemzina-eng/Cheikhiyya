@@ -118,7 +118,7 @@ fun HomeScreen(onOpenDrawer: () -> Unit, onNavigate: (String) -> Unit) {
                             Image(
                                 painter = painterResource(id = R.drawable.logo_circular),
                                 contentDescription = "شعار الطريقة الشيخية",
-                                modifier = Modifier.size(45.dp),
+                                modifier = Modifier.size(75.dp),
                             )
                         }
                     }
@@ -134,14 +134,14 @@ fun HomeScreen(onOpenDrawer: () -> Unit, onNavigate: (String) -> Unit) {
                         Image(
                             painter = painterResource(id = R.drawable.logo_horizontal),
                             contentDescription = "الطريقة الشيخية الشاذلية",
-                            modifier = Modifier.fillMaxWidth(0.92f).height(28.dp),
+                            modifier = Modifier.fillMaxWidth(0.72f).height(28.dp),
                         )
                     }
                     Spacer(Modifier.height(8.dp))
                     Text(
                         "( طريقة أسلاف بيضاء نقية )",
                         color = GoldLight,
-                        fontSize = 12.sp,
+                        fontSize = 15.sp,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),
                     )
