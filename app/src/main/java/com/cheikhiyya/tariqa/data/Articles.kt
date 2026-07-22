@@ -198,4 +198,5 @@ val ALL_ARTICLES = listOf(
     ARTICLE_CONTACT,
 )
 
-fun findArticle(id: String): Article? = ALL_ARTICLES.find { it.id == id }
+fun findArticle(id: String): Article? =
+    ALL_ARTICLES.find { it.id == id } ?: EXTRA_ZAWIYAS_ARTICLES.find { it.id == id }
