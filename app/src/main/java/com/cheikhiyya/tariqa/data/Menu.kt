@@ -106,8 +106,8 @@ val MENU: List<MenuNode> = listOf(
         title = "المتحف",
         icon = "place",
         children = listOf(
-            MenuNode(id = "museum_kotob", title = "كتب", articleId = pending("المتحف - كتب")),
-            MenuNode(id = "museum_rasail", title = "رسائل", articleId = pending("المتحف - رسائل")),
+            MenuNode(id = "museum_kotob", title = "كتب", articleId = "museum_kotob"),
+            MenuNode(id = "museum_rasail", title = "رسائل", articleId = "museum_rasail"),
         ),
     ),
 
