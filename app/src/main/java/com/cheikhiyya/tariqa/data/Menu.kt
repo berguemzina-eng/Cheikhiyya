@@ -87,6 +87,13 @@ val MENU: List<MenuNode> = listOf(
             MenuNode(id = "mohamed_saim", title = "سيدي محمد بن سليمان الصائم", articleId = "mohamed_saim"),
             MenuNode(id = "el_kadi_sidi_mohamed", title = "القاضي سيدي محمد عبد الله الجراري", articleId = "el_kadi_sidi_mohamed"),
             MenuNode(id = "sidi_youssef", title = "سيدي يوسف بن عابد الحسني الفاسي", articleId = "sidi_youssef"),
+            MenuNode(id = "mohamed_ben_bahous", title = "سيدي الحاج محمد بن بحوص", articleId = "mohamed_ben_bahous"),
+            MenuNode(id = "mohamed_zaoui", title = "سيدي محمد بن عبد الرحمن الزاوي", articleId = "mohamed_zaoui"),
+            MenuNode(id = "el_hadj_kada", title = "سيدي الحاج قادة زوي", articleId = "el_hadj_kada"),
+            MenuNode(id = "moulay_abdellah", title = "سيدي مولاي عبد الله نور", articleId = "moulay_abdellah"),
+            MenuNode(id = "mohamed_belkhir", title = "سيدي محمد بلخير الأغواطي", articleId = "mohamed_belkhir"),
+            MenuNode(id = "al_haj_el_mokhtar", title = "سيدي الحاج المختار بن الحاج محمد", articleId = "al_haj_el_mokhtar"),
+            MenuNode(id = "sidi_allal", title = "سيدي علال البوشيخي", articleId = "sidi_allal"),
         ),
     ),
 
