@@ -1,0 +1,155 @@
+package com.cheikhiyya.tariqa.data
+
+// Árbol de navegación, reorganizado para reflejar el ORDEN Y AGRUPACIÓN
+// REALES del menú de www.cheikhiyya.com (verificado con capturas de
+// pantalla de la web real). Las entradas marcadas con pending(...)
+// son categorías o páginas confirmadas que existen en la web pero
+// para las que aún no tengo el texto exacto — se completan pegando
+// el texto real de esa página (ver conversación).
+
+private fun pending(title: String) = "pending:$title"
+
+val MENU: List<MenuNode> = listOf(
+    MenuNode(id = "home", title = "الرئيسية", icon = "home", articleId = "home"),
+    MenuNode(id = "tassawof", title = "التصوف", icon = "book", articleId = "tassawof"),
+    MenuNode(id = "tariqa", title = "الطريقة الشيخية", icon = "star", articleId = "tariqa_cheikhiyya"),
+    MenuNode(id = "baya_adab", title = "العهد والبيعة وآداب الذكر", icon = "hand", articleId = "baya_adab"),
+    MenuNode(id = "conditions", title = "شروط الانتساب", icon = "check", articleId = "tariqa_conditions"),
+
+    // ===== أشهر الزوايا (نفس ترتيب الموقع الحقيقي بالضبط) =====
+    MenuNode(
+        id = "zawiyas",
+        title = "أشهر الزوايا",
+        icon = "place",
+        children = listOf(
+            MenuNode(
+                id = "zawiyas_algeria",
+                title = "الزوايا بالجزائر",
+                children = listOf(
+                    MenuNode(id = "zawiya_oued_namous", title = "زاوية واد الناموس", articleId = "zawiya_oued_namous"),
+                    MenuNode(id = "zawiya_markaziya", title = "الزاوية المركزية", articleId = "zawiya_markaziya"),
+                    MenuNode(id = "zawiya_brizina", title = "زاوية بريزينة", articleId = "zawiya_brizina"),
+                    MenuNode(id = "zawiya_ain_skhouna", title = "زاوية عين سخونة", articleId = "zawiya_ain_skhouna"),
+                    MenuNode(id = "zawiya_matlili", title = "زاوية متليلي", articleId = "zawiya_matlili"),
+                    MenuNode(id = "zawiya_3asla", title = "زاوية عسلة", articleId = "zawiya_3asla"),
+                    MenuNode(id = "zawiya_z_bouamama", title = "ز ش بوعمامة", articleId = pending("ز ش بوعمامة")),
+                    MenuNode(id = "zawiya_sidi_taj", title = "زاوية سيدي التاج", articleId = "zawiya_sidi_taj"),
+                    MenuNode(id = "zawiya_tlemcen", title = "زاوية تلمسان", articleId = "zawiya_tlemcen"),
+                    MenuNode(id = "zawiya_mowahidin", title = "زاوية الموحدين", articleId = "zawiya_mowahidin"),
+                    MenuNode(id = "masjid_karama", title = "مسجد الكرامة", articleId = "masjid_karama"),
+                    MenuNode(id = "zawiya_asmahiyya", title = "الزاوية السماحية", articleId = "zawiya_asmahiyya"),
+                    MenuNode(id = "zawiya_bni_wanif", title = "زاوية بني ونيف", articleId = "zawiya_bni_wanif"),
+                    MenuNode(id = "zawiya_boynan", title = "زاوية بوينان البليدة", articleId = "zawiya_boynan"),
+                    MenuNode(id = "zawiya_m3askar", title = "زاوية معسكر", articleId = "zawiya_m3askar"),
+                ),
+            ),
+            MenuNode(
+                id = "zawiyas_morocco",
+                title = "الزوايا بالمغرب",
+                children = listOf(
+                    MenuNode(id = "zawiya_bouamamiya_1", title = "الزاوية البوعمامية", articleId = "zawiya_bouamamiya"),
+                    MenuNode(id = "zawiya_fguig", title = "زاوية فجيج", articleId = "zawiya_fguig"),
+                    MenuNode(id = "zawiya_sidi_mohamed", title = "زاوية سيدي محمد عبد الله", articleId = "zawiya_sidi_mohamed"),
+                    MenuNode(id = "zawiya_sidi_brahim", title = "زاوية سيدي الحاج إبراهيم", articleId = "zawiya_sidi_brahim"),
+                    MenuNode(id = "zawiya_bouamamiya_2", title = "الزاوية البوعمامية الشيخية", articleId = "zawiya_bouamamiya"),
+                    MenuNode(id = "jama3_sidi_ahmed", title = "جامع سيدي احمد", articleId = "jama3_sidi_ahmed"),
+                    MenuNode(id = "zawiya_oujda", title = "زاوية وجدة", articleId = "zawiya_oujda"),
+                    MenuNode(id = "zawiya_bouarfa", title = "زاوية بوعرفة", articleId = pending("زاوية بوعرفة")),
+                ),
+            ),
+        ),
+    ),
+
+    MenuNode(id = "silsila", title = "سلسلة الطريقة", icon = "tree", articleId = "silsila_chooser"),
+
+    MenuNode(
+        id = "cheikhs",
+        title = "شيوخ الطريقة",
+        icon = "person",
+        children = listOf(
+            MenuNode(id = "sidi_hamza", title = "الشيخ الحالي", articleId = "sidi_hamza"),
+            MenuNode(id = "sidi_abdelkader", title = "سيدي عبد القادر بن محمد (المؤسس)", articleId = "sidi_abdelkader"),
+            MenuNode(id = "sidi_bouamama", title = "سيدي بوعمامة", articleId = "sidi_bouamama"),
+            MenuNode(id = "sidi_tayeb", title = "سيدي الحاج الطيب", articleId = "sidi_tayeb"),
+            MenuNode(id = "sidi_abdelhakem", title = "سيدي عبد الحاكم", articleId = "sidi_abdelhakem"),
+            MenuNode(id = "sidi_ahmed_ben_cheikh", title = "سيدي أحمد بن الشيخ", articleId = "sidi_ahmed_ben_cheikh"),
+        ),
+    ),
+
+    MenuNode(
+        id = "kharijeen",
+        title = "من خريجي الطريقة",
+        icon = "person",
+        children = listOf(
+            MenuNode(id = "sidi_belkacem", title = "سيدي بلقاسم بن موسى (بوعصرية)", articleId = "sidi_belkacem"),
+            MenuNode(id = "sidi_khalil", title = "سيدي خليل بن عثمان الفجيجي", articleId = "sidi_khalil"),
+            MenuNode(id = "sidi_mohamed_ben_ouda", title = "سيدي امحمد بن عودة", articleId = "sidi_mohamed_ben_ouda"),
+            MenuNode(id = "mohamed_saim", title = "سيدي محمد بن سليمان الصائم", articleId = "mohamed_saim"),
+            MenuNode(id = "el_kadi_sidi_mohamed", title = "القاضي سيدي محمد عبد الله الجراري", articleId = "el_kadi_sidi_mohamed"),
+            MenuNode(id = "sidi_youssef", title = "سيدي يوسف بن عابد الحسني الفاسي", articleId = "sidi_youssef"),
+            MenuNode(id = "mohamed_ben_bahous", title = "سيدي الحاج محمد بن بحوص", articleId = "mohamed_ben_bahous"),
+            MenuNode(id = "mohamed_zaoui", title = "سيدي محمد بن عبد الرحمن الزاوي", articleId = "mohamed_zaoui"),
+            MenuNode(id = "el_hadj_kada", title = "سيدي الحاج قادة زوي", articleId = "el_hadj_kada"),
+            MenuNode(id = "moulay_abdellah", title = "سيدي مولاي عبد الله نور", articleId = "moulay_abdellah"),
+            MenuNode(id = "mohamed_belkhir", title = "سيدي محمد بلخير الأغواطي", articleId = "mohamed_belkhir"),
+            MenuNode(id = "al_haj_el_mokhtar", title = "سيدي الحاج المختار بن الحاج محمد", articleId = "al_haj_el_mokhtar"),
+            MenuNode(id = "sidi_allal", title = "سيدي علال البوشيخي", articleId = "sidi_allal"),
+            MenuNode(id = "sidi_laala", title = "سيدي لعلى بن أبي بكر", articleId = "sidi_laala"),
+            MenuNode(id = "sidi_mohamed_ben_yamna", title = "سيدي محمد (بن يامنة)", articleId = "sidi_mohamed_ben_yamna"),
+            MenuNode(id = "sidi_ahmed_ben_bahous", title = "سيدي أحمد بن بحوص", articleId = "sidi_ahmed_ben_bahous"),
+            MenuNode(id = "sidi_kaddour", title = "سيدي قدور بن حمزة", articleId = "sidi_kaddour"),
+            MenuNode(id = "lakhdar_ben_comar", title = "سيدي لخضر بن قومار", articleId = "lakhdar_ben_comar"),
+            MenuNode(id = "al_haj_ash_sheikh", title = "سيدي الحاج الشيخ", articleId = "al_haj_ash_sheikh"),
+            MenuNode(id = "al_haj_sliman", title = "المقدم الحاج سليمان بن جلول", articleId = "al_haj_sliman"),
+        ),
+    ),
+
+    MenuNode(
+        id = "ancestors",
+        title = "أجداد سيدي الشيخ",
+        icon = "person",
+        children = listOf(
+            MenuNode(id = "sidi_sliman", title = "سيدي سليمان بن أبي سماحة (الجد الأكبر)", articleId = "sidi_sliman"),
+            MenuNode(id = "sidi_mohamed_ben_sliman", title = "سيدي محمد بن سليمان (الوالد)", articleId = "sidi_mohamed_ben_sliman"),
+            MenuNode(id = "sidi_ahmed_majdoub", title = "سيدي أحمد المجذوب", articleId = "sidi_ahmed_majdoub"),
+            MenuNode(id = "lalla_safia", title = "للا صفية", articleId = "lalla_safia"),
+        ),
+    ),
+
+    MenuNode(
+        id = "adkar",
+        title = "الأذكار والأوراد",
+        icon = "hand",
+        children = listOf(
+            MenuNode(id = "tasbih", title = "المسبحة", articleId = "tasbih"),
+            MenuNode(id = "hizb_al_falah", title = "حزب الفلاح", articleId = "hizb_al_falah"),
+            MenuNode(id = "hadra", title = "الحضرة", articleId = "hadra"),
+            MenuNode(id = "yaqouta", title = "الياقوتة", articleId = "yaqouta"),
+            MenuNode(id = "adkar_amma", title = "الأذكار العامة", articleId = "adkar_amma"),
+        ),
+    ),
+
+    MenuNode(
+        id = "photos",
+        title = "الصور",
+        icon = "image",
+        children = listOf(
+            MenuNode(id = "photos_cheikhs", title = "شيوخ الطريقة", articleId = pending("صور شيوخ الطريقة")),
+            MenuNode(id = "photos_zaouia", title = "زوايا الطريقة", articleId = pending("صور زوايا الطريقة")),
+        ),
+    ),
+
+    MenuNode(id = "golden_book", title = "الكتاب الذهبي", icon = "book", externalUrl = "https://www.facebook.com/groups/cheikhiyya/"),
+
+    MenuNode(
+        id = "museum",
+        title = "المتحف",
+        icon = "place",
+        children = listOf(
+            MenuNode(id = "museum_kotob", title = "كتب", articleId = "museum_kotob"),
+            MenuNode(id = "museum_rasail", title = "رسائل", articleId = "museum_rasail"),
+        ),
+    ),
+
+    MenuNode(id = "contact", title = "إتصل بنا", icon = "mail", articleId = "contact"),
+)
